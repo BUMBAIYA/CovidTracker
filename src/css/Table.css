@@ -1,7 +1,7 @@
 .table {
     margin-top: 20px;
     overflow-y: scroll;
-    height: 400px;
+    height: 50vh;   
     color: #6a5d5d;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -24,3 +24,4 @@
 .table tr:nth-of-type(odd) {
     background-color: #f3f2f8;
 }
+

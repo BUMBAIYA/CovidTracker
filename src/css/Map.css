@@ -1,0 +1,41 @@
+.map {
+    height: 400px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-top: 16px;
+    box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
+}
+
+.map .leaflet-container {
+    height: 100%;
+}
+
+.popup__flag img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.popup__flag {
+    height: 80px;
+    width: 100%;
+    border-radius: 8px;
+    background-size: cover;
+}
+
+.popup__name {
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.popup__deaths,
+.popup__cases,
+.popup__recovered {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.popup__container {
+    width: 130px;
+}

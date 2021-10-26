@@ -6,11 +6,17 @@
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.4",
+    "@react-leaflet/core": "^1.0.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "chart.js": "^3.6.0",
+    "leaflet": "^1.7.1",
+    "numeral": "^2.0.6",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.3.0",
     "react-dom": "^17.0.2",
+    "react-leaflet": "^3.1.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
@@ -37,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
