@@ -35,11 +35,13 @@ export const prettyPrintStat = (stat) => (
 export const showDataOnMap = (data, casesType = "cases") => (
     data.map(country => (
         <Circle
-            key={country.countryInfo.iso2 === "null" ? "wrld" : country.countryInfo.iso2}
+            // key={`${country.countryInfo.lat}.${country.countryInfo.long}`}
             center={[country.countryInfo.lat, country.countryInfo.long]}
             fillOpacity={0.4}
-            color={casesTypeColors[casesType].hex}
-            fillColor={casesTypeColors[casesType].hex}
+            pathOptions={{
+                color: casesTypeColors[casesType].hex,
+                fillColor: casesTypeColors[casesType].hex
+            }}
             radius={
                 Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
             }
@@ -48,9 +50,9 @@ export const showDataOnMap = (data, casesType = "cases") => (
                 <div className="popup__container">
                     <div className="popup__flag" style={{ backgroundImage: `url(${country.countryInfo.flag})` }} />
                     <div className="popup__name" >{country.country}</div>
-                    <div className="popup__cases" >Cases : {numeral(country.cases).format("0,0")}</div>
-                    <div className="popup__recovered" >Recovered : {numeral(country.recovered).format("0,0")}</div>
-                    <div className="popup__deaths" >Deaths : {numeral(country.deaths).format("0,0")}</div>
+                    <div className="popup__cases" >Cases : <strong>{numeral(country.cases).format("0,0")}</strong></div>
+                    <div className="popup__recovered" >Recovered : <strong>{numeral(country.recovered).format("0,0")}</strong></div>
+                    <div className="popup__deaths" >Deaths : <strong>{numeral(country.deaths).format("0,0")}</strong></div>
                 </div>
             </Popup>
         </Circle>
