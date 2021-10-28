@@ -7,6 +7,7 @@ import Map from './components/Map';
 import { sortData, prettyPrintStat } from './utility/utils';
 import LineGraph from './components/LineGraph';
 import 'leaflet/dist/leaflet.css';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -17,6 +18,13 @@ function App() {
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
+
+  const findLocation = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      setMapCenter([position.coords.latitude, position.coords.longitude]);
+      setMapZoom(10);
+    });
+  }
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -57,10 +65,20 @@ function App() {
         setCountry(countryCode);
         setCountryInfo(data);
         if (countryCode === "worldwide") {
+          const getCountriesData = async () => {
+            await fetch("https://disease.sh/v3/covid-19/countries")
+              .then(response => response.json())
+              .then(data => {
+                setMapCountries(data);
+              })
+          };
+          getCountriesData();
           setMapCenter([27.90, 27.90]);
           setMapZoom(2);
         }
         else {
+          const tempCountry = [data];
+          setMapCountries(tempCountry);
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
           setMapZoom(4);
         }
@@ -75,17 +93,22 @@ function App() {
             <div className="app__logo"></div>
             <h1>Covid-19 Tracker</h1>
           </div>
-          <FormControl className="app__dropdown">
-            <Select
-              value={country}
-              onChange={onCountryChange}
-              variant="outlined">
-              <MenuItem value="worldwide">Worldwide</MenuItem>
-              {countries.map(country => (
-                <MenuItem key={country.value} value={country.value}>{country.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <div className="app__headerRight">
+            <div className="logo__location">
+              <MyLocationIcon sx={{ fontSize: 40 }} onClick={findLocation} />
+            </div>
+            <FormControl className="app__dropdown">
+              <Select
+                value={country}
+                onChange={onCountryChange}
+                variant="outlined">
+                <MenuItem value="worldwide">Worldwide</MenuItem>
+                {countries.map(country => (
+                  <MenuItem key={country.value} value={country.value}>{country.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
         </div>
         <div className="app__stats">
           <Infobox
@@ -110,6 +133,7 @@ function App() {
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)} />
         </div>
+        <div className="map__info">Click on circle to see details of country or choose from above dropdown</div>
         <Map
           casesType={casesType}
           countries={mapCountries}
@@ -120,7 +144,7 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
-          <h3 className="app__rightGraphHeader">Worldwide New {casesType}</h3>
+          <h3 className="app__rightGraphHeader">Worldwide New {casesType} (90 days)</h3>
           <LineGraph casesType={casesType} />
         </CardContent>
       </Card>

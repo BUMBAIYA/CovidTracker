@@ -18,13 +18,13 @@ const options = {
         mode: "index",
         intersect: false,
         callbacks: {
-            label: function (tooltipItem, data) {
+            label: function (tooltipItem) {
                 return numeral(tooltipItem.value).format("+0,0");
             },
         },
     },
     scales: {
-        xAxes: [
+        xAxis: [
             {
                 type: "time",
                 time: {
@@ -33,10 +33,10 @@ const options = {
                 },
             },
         ],
-        yAxes: [
+        yAxis: [
             {
-                gridLines: {
-                    display: false,
+                grid: {
+                    display: false
                 },
                 ticks: {
                     // Include a dollar sign in the ticks
@@ -77,11 +77,9 @@ function LineGraph({ casesType = "cases" }) {
                 .then((data) => {
                     let chartData = buildChartData(data, casesType);
                     setData(chartData);
-                    // console.log(chartData);
-                    // buildChart(chartData);
+
                 });
         };
-
         fetchData();
     }, [casesType]);
 
@@ -92,14 +90,16 @@ function LineGraph({ casesType = "cases" }) {
                     data={{
                         datasets: [
                             {
-                                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                                borderColor: "#CC1034",
+                                backgroundColor: `rgba(204, 16, 52, 0.5)`,
+                                borderColor: `${casesType !== "recovered" ? "#CC1034" : "#10cc3c"}`,
                                 data: data,
                                 fill: {
                                     below: "rgba(204,16,52,0.5)",
                                     target: "origin"
                                 },
                                 type: 'line',
+                                xAxisID: "xAxis",
+                                yAxisID: "yAxis"
                             },
                         ],
                     }}
