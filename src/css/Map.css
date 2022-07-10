@@ -1,14 +1,14 @@
 .map {
     height: 400px;
     background-color: white;
-    padding: 1rem;
     border-radius: 20px;
     margin-top: 16px;
     box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
 }
 
 .map .leaflet-container {
-    height: 100%;
+    height: 400px;
+    border-radius: 0.5rem;
 }
 
 .popup__flag img{
