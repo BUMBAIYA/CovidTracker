@@ -11,6 +11,10 @@
     border-radius: 0.5rem;
 }
 
+.leaflet-popup-content {
+    margin: 19px 19px;
+}
+
 .popup__flag img{
     width: 100%;
     border-radius: 5px;
@@ -21,6 +25,7 @@
     width: 100%;
     border-radius: 8px;
     background-size: cover;
+    box-shadow: 0 2px 4px 0 #919EAB !important;
 }
 
 .popup__name {

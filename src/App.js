@@ -6,6 +6,9 @@ import Card from "@mui/material/Card";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 //Components
 import InfoBox from "./components/InfoBox.js";
@@ -22,8 +25,9 @@ import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 import CoronavirusOutlinedIcon from '@mui/icons-material/CoronavirusOutlined';
 import HealingOutlinedIcon from '@mui/icons-material/HealingOutlined';
 import DangerousOutlinedIcon from '@mui/icons-material/DangerousOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import ApiIcon from '@mui/icons-material/Api';
 import 'leaflet/dist/leaflet.css';
-import { Box } from "@mui/system";
 
 
 function App() {
@@ -95,8 +99,33 @@ function App() {
 
     return (
       <Page title="Covid Tracker | Home">
-        <Container maxWidth="xl" sx={{ paddingTop: "24px", paddingBottom: "40px" }}>
+        <Container maxWidth="xl" 
+          sx={{ 
+            paddingTop: "24px",
+            paddingBottom: "40px",
+          }}>
           <Grid container spacing={2}>
+            <Grid items xs={12} sm={12} md={12}>
+              <Box component="div" sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography 
+                  sx={{padding: "7px 16px", fontWeight: 900, fontFamily: "cursive"}}
+                  variant="h3"
+                  color={theme.palette.secondary.dark}
+                  >
+                    CovidTracker
+                </Typography>
+                <Box component="div">
+                  <Typography variant="button">Source Code</Typography>
+                  <IconButton href="https://github.com/BUMBAIYA/CovidTracker" color="secondary" size="large">
+                    <GitHubIcon/>
+                  </IconButton>
+                  <Typography variant="button">API</Typography>
+                  <IconButton href="https://disease.sh" color="secondary" size="large">
+                    <ApiIcon/>
+                  </IconButton>
+                </Box>
+              </Box>
+            </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <InfoBox
                 title={`${country} cases`}
@@ -147,8 +176,14 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={12} md={12}>
               <Card sx={{padding: 2.5}}>
-                <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <FormControl>
+                <Box 
+                  sx={{ 
+                    display: "flex",
+                    [theme.breakpoints.up('md')]: { flexDirection: "row", justifyContent: "space-between"},
+                    [theme.breakpoints.down('md')]: {flexDirection: "column", gap: "0.5rem"}
+                    }}
+                  >
+                  <FormControl sx={{display: "inline-block"}}>
                     <Select
                       value={country}
                       onChange={onCountryChange}
@@ -169,7 +204,7 @@ function App() {
               </Card>
             </Grid>
           </Grid>
-        </Container >
+        </Container>
       </Page >
     );
 }
