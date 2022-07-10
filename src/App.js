@@ -11,7 +11,7 @@ import { useTheme } from "@mui/material/styles";
 import InfoBox from "./components/InfoBox.js";
 import Page from "./components/Page.js";
 import Map from "./components/Map.js";
-import SplitButton from "./components/SplitButton.js";
+import RadioButtonsGroup from "./components/RadioButtonGroup.js";
 //utils
 import { printStats } from "./utility/utils.js";
 //Table Components
@@ -23,6 +23,7 @@ import CoronavirusOutlinedIcon from '@mui/icons-material/CoronavirusOutlined';
 import HealingOutlinedIcon from '@mui/icons-material/HealingOutlined';
 import DangerousOutlinedIcon from '@mui/icons-material/DangerousOutlined';
 import 'leaflet/dist/leaflet.css';
+import { Box } from "@mui/system";
 
 
 function App() {
@@ -146,17 +147,20 @@ function App() {
             </Grid>
             <Grid item xs={12} sm={12} md={12}>
               <Card sx={{padding: 2.5}}>
-                <FormControl>
-                  <Select
-                    value={country}
-                    onChange={onCountryChange}
-                    variant="outlined">
-                    <MenuItem value="worldwide">Worldwide</MenuItem>
-                    {countries.map(country => (
-                      <MenuItem key={country.value} value={country.value}>{country.name}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
+                <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                  <FormControl>
+                    <Select
+                      value={country}
+                      onChange={onCountryChange}
+                      variant="outlined">
+                      <MenuItem value="worldwide">Worldwide</MenuItem>
+                      {countries.map(country => (
+                        <MenuItem key={country.value} value={country.value}>{country.name}</MenuItem>
+                        ))}
+                    </Select>
+                  </FormControl>
+                  <RadioButtonsGroup onSubmit={value => setCasesType(value)}/>
+                </Box>
                 <Map
                   casesType={casesType}
                   countries={mapCountries}

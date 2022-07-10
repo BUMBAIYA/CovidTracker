@@ -4,7 +4,7 @@ import { Circle, Popup } from 'react-leaflet';
 
 const casesTypeColors = {
     cases: {
-        hex: "#fb4443",
+        hex: "#4287f5",
         rgb: "rgb(204, 16, 52)",
         half_op: "rgba(204, 16, 52, 0.5)",
         multiplier: 220,
@@ -21,11 +21,6 @@ const casesTypeColors = {
         half_op: "rgba(251, 68, 67, 0.5)",
         multiplier: 1300,
     },
-};
-
-export const sortData = (data) => {
-    const sortedData = [...data];
-    return sortedData.sort((a, b) => (a.cases > b.cases ? -1 : 1));
 };
 
 export const printStats = (stat) => (
