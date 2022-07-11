@@ -105,16 +105,26 @@ function App() {
             paddingBottom: "40px",
           }}>
           <Grid container spacing={2}>
-            <Grid items xs={12} sm={12} md={12}>
-              <Box component="div" sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+            <Grid items xs={12} sm={12} md={6} 
+              sx={{
+                [theme.breakpoints.up('md')]: {padding: "0.5rem 1rem"},
+                [theme.breakpoints.down('md')]: {padding: "0.2rem 1rem"}
+              }}>
                 <Typography 
-                  sx={{padding: "7px 16px", fontWeight: 900, fontFamily: "cursive"}}
+                  sx={{fontWeight: 900}}
                   variant="h3"
                   color={theme.palette.secondary.dark}
                   >
                     CovidTracker
                 </Typography>
-                <Box component="div">
+            </Grid>
+            <Grid items xs={12} sm={12} md={6}>
+                <Box 
+                  component="div" 
+                  sx={{
+                    [theme.breakpoints.up('md')]: {display: "flex", justifyContent: "right", alignItems: "center", padding: "0.5rem 1rem"},
+                    [theme.breakpoints.down('md')]: {padding: "0rem 1rem"}
+                    }}>
                   <Typography variant="button">Source Code</Typography>
                   <IconButton href="https://github.com/BUMBAIYA/CovidTracker" color="secondary" size="large">
                     <GitHubIcon/>
@@ -124,7 +134,6 @@ function App() {
                     <ApiIcon/>
                   </IconButton>
                 </Box>
-              </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <InfoBox
