@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### [Live Site](https://covid19statswebsite.netlify.com/)
+### [Live Site](https://bumbaiya.github.io/CovidTracker/)
 
 ## Introduction
 This project is made using [Material-UI](https://mui.com/) library and ReactJs.
