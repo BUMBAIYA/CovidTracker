@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 //Components
-import InfoBox from "./components/InfoBox.js";
+import InfoBox from "./components/Infobox.js";
 import Page from "./components/Page.js";
 import Map from "./components/Map.js";
 import RadioButtonsGroup from "./components/RadioButtonGroup.js";
