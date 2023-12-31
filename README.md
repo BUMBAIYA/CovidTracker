@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### [Live Site](https://bumbaiya.github.io/CovidTracker/)
 
-![Webpage](https://drive.google.com/uc?export=view&id=1acie2J1TU2Ypd7FqFkIHJKyiYMM1sE_r)
+![Webpage](https://github.com/BUMBAIYA/CovidTracker/assets/85615075/795b4a6d-ef67-42c5-8d42-37168b21dcdf)
 
 ## Introduction
 This project is made using [Material-UI](https://mui.com/) library and ReactJs.
